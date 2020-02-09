@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>This</title>
+</head>
+<body>
+    <script>
+        function student (name, surname, byear){
+            this.name = name;
+            this.surname = surname;
+            this.byear = byear;
+            this.marks = new Array(30);
+            this.attendance = new Array(30);
+            this.getCurrentAge = function(){
+                let today = new Date();
+                return today.getFullYear() - this.byear;
+            };
+         this.AverageMark = function(){
+             return this.marks.reduce((acc, item) => acc + item ) / this.marks.length;  
+         }; 
+         this.AverageAttendance = function(){
+             return this.attendance.reduce((acc, item) => acc + item ) / this.attendance.length;
+         };
+         this.present = function(){
+             let index = this.attendance.findIndex(getIndex);
+             index >= 0 ? this.attendance[index]= true : false;
+         };
+         this.absent = function(){
+             let index = this.attendance.findIndex(getIndex);
+             index >= 0 ? this.attendance[index]= false : false;
+         }
+         this.mark = function(mark){
+                let index =  this.marks.findIndex(getIndex)
+                index >=  0 ? this.marks[index] = mark : false;              
+        };
+        this.summary = function(){
+                if (this.AverageMark() > 9 && this.AverageAttendance() > 0.9) {
+                    return 'Ути какой молодчинка!'
+                } else if(this.AverageMark() < 9 && this.AverageAttendance() < 0.9) {
+                    return 'Редиска!'
+                } else {
+                    return 'Норм, но можно лучше'
+                }
+            };
+            function getIndex(el){
+                return el===undefined;
+            }
+          
+        }
+        const ivan = new student ('Ivan', 'Ivanov', 1990);
+
+       ivan.absent()
+       ivan.absent()
+       ivan.present()
+       ivan.present()
+       ivan.present()
+       ivan.present()
+       ivan.present()
+       ivan.present()
+       ivan.present()
+       ivan.present()
+
+        ivan.mark(10);
+        ivan.mark(9);
+        ivan.mark(6);
+        ivan.mark(10);
+        ivan.mark(9);
+        ivan.mark(8);
+        ivan.mark(7);
+        ivan.mark(8);
+        ivan.mark(10);
+        ivan.mark(7);
+        ivan.mark(7);
+        ivan.mark(5);
+        ivan.mark(7);
+        ivan.mark(10);
+        ivan.mark(7);
+        ivan.mark(7);
+        ivan.mark(5);
+        ivan.mark(7);
+        ivan.mark(4);
+        ivan.mark(7);
+        ivan.mark(9);
+        ivan.mark(5);
+        ivan.mark(8);
+
+     
+       
+
+
+         console.log(ivan.getCurrentAge())
+         console.log(ivan.AverageAttendance())
+         console.log(ivan.AverageMark())
+         console.log(ivan.summary())
+
+        
+    </script>
+    
+</body>
+</html>
